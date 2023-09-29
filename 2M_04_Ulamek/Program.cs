@@ -5,21 +5,21 @@ namespace _2M_04_Ulamek
     class Ulamek
     {
         private int licznik=0, mianownik=1;
-        public Ulamek()
-        {
-            licznik = 0;
-            mianownik = 1;
-        }
-        public Ulamek(int licznik)
-        {
-            this.licznik = licznik; 
-            mianownik = 1;
-        }
-        public Ulamek(int licznik, int mianownik)
+
+        public Ulamek(int licznik=0, int mianownik=1)
         {
             int nwd = NWD(licznik, mianownik);
             this.licznik = licznik/nwd;
             this.mianownik = mianownik/nwd;
+        }
+
+        public int getLicznik()
+        {
+            return licznik;
+        }
+        public void setLicznik(int licznik)
+        {
+           this.licznik = licznik;           
         }
         public void wypiszUlamek()
         {
@@ -27,8 +27,16 @@ namespace _2M_04_Ulamek
         }
         private int NWD(int a, int b)
         {
-            int p = a % b;
-            return p;
+            int p = 1;
+
+            while (p!=0)
+            {
+                p = a % b;
+                a = b;
+                b = p;
+            }
+            
+            return a;
         } 
     }
     internal class Program
